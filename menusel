@@ -1,0 +1,133 @@
+
+
+
+/*
+
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '38') {
+        alert("You pressed up!");
+    }
+    else if (e.keyCode == '40') {
+        alert("You pressed down!");
+    }
+    else if (e.keyCode == '37') {
+       alert("You pressed left!");
+    }
+    else if (e.keyCode == '39') {
+       alert("You pressed right!");
+    }
+
+}
+
+*/
+
+var thing = {
+	face: [
+		document.getElementById("one"), 
+		document.getElementById("two"),
+		document.getElementById("three"),
+		document.getElementById("four"),
+		document.getElementById("five"),
+		document.getElementById("six"),
+		document.getElementById("seven"),
+		document.getElementById("eight"),
+		document.getElementById("nine"),
+		document.getElementById("ten"),
+			
+	],
+	i: 0,
+	
+	
+	next: function(){
+		
+		if(this.i == 9){
+			this.face[this.i].id = "one";
+			this.i = 0;
+			this.face[this.i].id = "sel";
+						
+		}
+		else{
+			this.i += 1;
+			this.face[this.i].id = "sel";
+			this.face[this.i - 1].id = "one";
+		}		
+		
+	},
+	
+	prev: function(){
+		
+		if(this.i == 0){
+			this.face[this.i].id = "one";
+			this.i = 9;
+			this.face[this.i].id = "sel";
+			
+			
+		}
+		else{
+			this.i -= 1;
+			this.face[this.i].id = "sel";
+			this.face[this.i + 1].id = "one";
+		}
+		
+	},
+	
+	up: function(){
+		if(this.i >= 5){
+			this.face[this.i].id = "one";
+			this.i -= 5;
+			this.face[this.i].id = "sel";	
+		}
+		
+		
+		
+		
+	},
+	
+	down: function(){
+		if(this.i < 5){
+			this.face[this.i].id = "one";
+			this.i += 5;
+			this.face[this.i].id = "sel";
+		}
+	},
+	
+	
+	
+	
+	checkKey: function(e){
+		
+
+		e = e || window.event;
+
+		if (e.keyCode == '38') {
+			this.up();
+		}
+		else if (e.keyCode == '40') {
+			this.down();
+		}
+		else if (e.keyCode == '37') {
+			this.prev();
+		  
+		}
+		else if (e.keyCode == '39') {			
+			this.next();
+		   
+		}
+		
+	}
+	
+	
+};
+
+//document.onkeydown = thing.checkKey;
+
+
+
+thing.face[thing.i].id = "sel";
+
+//alert(thing.face[0].innerHTML);
